@@ -1,0 +1,59 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(plotly)
+```
+
+
+This is the import process
+```{r}
+
+library(dplyr)
+library(ggplot2)
+
+simulated_patient_data %>%
+ filter(start >= "1950-11-10 22:54:30" & start <= "2020-12-04 22:58:46") %>%
+ 
+    filter(marital %in% "S" | is.na(marital)) %>%
+ filter(patient_age >= 57L & patient_age <= 
+    111L) %>%
+ ggplot() +
+ aes(x = race, fill = gender) +
+ geom_bar() +
+ scale_fill_hue() +
+ theme_minimal()
+
+```
+
+
+This is the data viz
+
+```{r}
+simulated_patient_data %>%
+ filter(start >= "1950-11-10 22:54:30" & start <= "2020-12-04 22:58:46") %>%
+ 
+    filter(marital %in% "S" | is.na(marital)) %>%
+ filter(patient_age >= 57L & patient_age <= 
+    111L) %>%
+ ggplot() +
+ aes(x = race, fill = gender) +
+ geom_bar() +
+ scale_fill_hue() +
+ theme_minimal()
+```
+
+
+Interactive data viz
+
+```{r}
+library(ggplot2)
+library(plotly)
+p <- ggplot(data = diamonds, aes(x = cut, fill = clarity)) +
+            geom_bar(position = "dodge")
+ggplotly(p)
+```
+
